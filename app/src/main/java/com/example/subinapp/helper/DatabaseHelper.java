@@ -2,6 +2,7 @@ package com.example.subinapp.helper;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -10,6 +11,7 @@ import androidx.annotation.Nullable;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     // 데이터베이스 초기화를 위한 변수
+    // 디바이스 익스플로러 data >> data >> app >> databases
     private static final String DBNAME="android.db";
     private static final int DBVERSION=1;
 
@@ -61,4 +63,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     // 아이디 중복 확인
+    public boolean useridCheck(String userid){
+        SQLiteDatabase db = this.getReadableDatabase();
+        //커서 초기화
+        Cursor cur = db.query("member", new String[]{"mno"}, "userid=?", new String[]{userid}, null, null, null);
+
+        //조회 결과 확인
+        boolean exists = cur.getCount() > 0;
+
+        //db 연결 해제
+        cur.close();
+        db.close();
+
+        return exists;
+    }
 }
