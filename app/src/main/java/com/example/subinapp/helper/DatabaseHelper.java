@@ -50,7 +50,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put("name", name);
         values.put("email", email);
 
-        //테이블에 데이터 저장
+        // 테이블에 데이터 저장
         long result =db.insert("member", null, values);
 
         // db 연결 해제
