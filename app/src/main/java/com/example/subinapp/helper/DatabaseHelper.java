@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     // 데이터베이스 초기화를 위한 변수
@@ -76,5 +79,34 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
 
         return exists;
+    }
+
+    // 회원 목록 조회 매서드
+    public List<String> getAllUsers() {
+        String sql = "select userid, name, email from member";
+        SQLiteDatabase db = this.getReadableDatabase();
+        List<String> userList = new ArrayList<>();
+
+        // 쿼리 실행
+        Cursor cur = db.rawQuery(sql, null);
+
+        if(cur.moveToFirst()){
+            do {
+                String userid = cur.getString(0);
+                String name = cur.getString(1);
+                String email = cur.getString(2);
+
+                String userinfo = "아이디 :" + userid + "\n"
+                        +"이름 :" + name + "\n"
+                        +"이메일 :" + email;
+
+                userList.add(userinfo);
+            } while(cur.moveToNext());
+        }
+
+        cur.close();
+        db.close();
+
+        return userList;
     }
 }
