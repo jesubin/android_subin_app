@@ -39,8 +39,7 @@
             android:layout_height="wrap_content"
             android:hint="아이디 입력"
             android:inputType="text"
-            android:maxLength="16"
-            android:minLength="8" />
+            android:maxLength="16" />
 
         <!-- 비밀번호 입력 -->
         <EditText
@@ -49,8 +48,7 @@
             android:layout_height="wrap_content"
             android:hint="비밀번호 입력"
             android:inputType="textPassword"
-            android:maxLength="16"
-            android:minLength="8" />
+            android:maxLength="16" />
 
         <!-- 이름 입력 -->
         <EditText
