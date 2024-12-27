@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         editTextName = findViewById(R.id.editTextName);
         editTextEmail = findViewById(R.id.editTextTextEmailAddress);
         buttonJoin = findViewById(R.id.button);
-        View buttonUserlist = findViewById(R.id.button2);
+        ButtonUserlist = findViewById(R.id.button2);
 
         // 데이터베이스 헬퍼 초기화
         databaseHelper = new DatabaseHelper(this);
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         // 회원조회 이벤트 처리
         // 로그인되어 있다면 - UserListActivity로 이동
         // 로그인되지 않았다면 - LoginActivity로 이동
-        buttonUserlist.setOnClickListener(
+        ButtonUserlist.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
